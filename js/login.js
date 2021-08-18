@@ -61,5 +61,5 @@ function onSignIn(googleUser) {
 }
 
 function red(){
-    location.href("file:///C:/Users/Ailen/OneDrive/Desktop/Obligatorio/Workspace%20inicial/index.html");
+    location.replace("file:///C:/Users/Ailen/OneDrive/Desktop/Obligatorio/Workspace%20inicial/index.html");
 }
