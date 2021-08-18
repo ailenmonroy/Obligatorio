@@ -57,6 +57,9 @@ function onSignIn(googleUser) {
     // The ID token you need to pass to your backend:
     var id_token = googleUser.getAuthResponse().id_token;
     console.log("ID Token: " + id_token);
-    location.href("file:///C:/Users/Ailen/OneDrive/Desktop/Obligatorio/Workspace%20inicial/index.html");
+    
 }
 
+function red(){
+    location.href("file:///C:/Users/Ailen/OneDrive/Desktop/Obligatorio/Workspace%20inicial/index.html");
+}
