@@ -58,5 +58,5 @@ function onSignIn(googleUser) {
         var id_token = googleUser.getAuthResponse().id_token;
         console.log("ID Token: " + id_token);
         location.replace("file:///C:/Users/Ailen/OneDrive/Desktop/Obligatorio/Workspace%20inicial/index.html");
-      };
+}
 
