@@ -59,6 +59,7 @@ function onSignIn(googleUser) {
     console.log(id_token);     
     localStorage.setItem("usuario", profile.getEmail()); //setItem almacena el dato en la posición "usuario"     
     sessionStorage.setItem("usuario", profile.getEmail()); 
+    sessionStorage.setItem('log',true);
 };  
 
     function signOut() {     
