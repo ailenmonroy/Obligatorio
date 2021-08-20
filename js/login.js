@@ -57,18 +57,15 @@ function onSignIn(googleUser) {
     console.log('Email: ' + profile.getEmail()); 
     var id_token = googleUser.getAuthResponse().id_token;     
     console.log(id_token);     
-    localStorage.setItem('uses', profile.getEmail());   
-    sessionStorage.setItem('user', profile.getEmail()); 
+    
     sessionStorage.setItem('log',true);
 };  
 
 function signOut() {     
-    var auth2 = gapi.auth2.getAuthInstance();     
-    localStorage.clear();     
-    sessionStorage.clear();     
+    var auth2 = gapi.auth2.getAuthInstance();              
     auth2.signOut().then(function() {         
         console.log('User signed out.');         
-        location.href = "login.html";      
+        location.replace("login.html");      
     }); 
 };
 
