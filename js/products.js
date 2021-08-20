@@ -27,7 +27,7 @@ function showProdList(array){
                         <small class="text-muted">` + prod.soldCount + ` artículos</small>
                         
                     </div>
-                    <p class="text-muted">` + prod.description + ` artículos</p>
+                    <p class="text-muted">` + prod.description + ` </p>
                     <p class="text-muted">` + prod.cost +  prod.currency +` </p>
                    
                     
@@ -47,7 +47,7 @@ function showProdList(array){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function () {
-    showSpinner();
+   
     getJSONData(PRODUCTS_URL).then(function(resultObj){
         if (resultObj.status === "ok")
         {
