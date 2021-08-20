@@ -59,7 +59,9 @@ function onSignIn(googleUser) {
     console.log(id_token);     
     
     sessionStorage.setItem('log',true);
-};  
+}
+
+
 
 function signOut() {     
     var auth2 = gapi.auth2.getAuthInstance();              
@@ -67,7 +69,7 @@ function signOut() {
         console.log('User signed out.');         
         location.replace("login.html");      
     }); 
-};
+}
 
 
 
