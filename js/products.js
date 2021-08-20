@@ -1,4 +1,13 @@
+const ORDER_ASC_BY_NAME = "AZ";
+const ORDER_DESC_BY_NAME = "ZA";
+const ORDER_BY_PROD_COUNT = "Cant.";
+var currentProdArray = [];
 var prodArray = [];
+var currentSortCriteria = undefined;
+var minCount = undefined;
+var maxCount = undefined;
+
+
 
 function showProdList(array){
 
@@ -32,6 +41,7 @@ function showProdList(array){
     }
 }
 
+ 
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
@@ -46,6 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
             showProdList(prodArray);
         }
     });
+
 
 });
 

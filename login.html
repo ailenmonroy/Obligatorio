@@ -76,7 +76,7 @@
 
                   <div class="d-flex justify-content-center text-center mt-4 pt-1">
                    
-                    <div class="btn btn-primary g-signin2" data-onsuccess="onSignIn" data-theme="light" onclick="red();"></div>
+                    
                     
 
                   </div>
@@ -93,16 +93,6 @@
   </div>
   
  
-  <a href='#' onclick='signOut();'>[Sign out]</a>
-
-  <script>
-  function signOut() {
-        var auth2 = gapi.auth2.getAuthInstance();
-        auth2.signOut().then(function () {
-      /* Una vez deslogueado... */
-          });
-      }
-  </script>
 
 
   <script src="js/init.js"></script>
