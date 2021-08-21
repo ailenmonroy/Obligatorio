@@ -14,7 +14,7 @@ function cargarErroresLog(id,idmen) {
     if(elem.value == ''){
 
         if(e.id == 'us'){
-            e.innerHTML = "Username required."
+            e.innerHTML = "Username required.";
             
         }else{
             e.innerHTML = "Password required.";
