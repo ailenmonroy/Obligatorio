@@ -39,8 +39,8 @@ var getJSONData = function(url){
 //Empezar con login.js como "portada"
 
 function inicio(){
-  if(sessionStorage.getItem('log') == null){
-    location.replace("login.html");
+  if(sessionStorage.getItem('log') == null){//null = indefinida
+    location.replace("login.html");//si esta indefinida me lleva al login
   }
         
 }
