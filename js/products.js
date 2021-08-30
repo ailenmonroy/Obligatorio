@@ -90,24 +90,22 @@ function sortAndShowProds(sortCriteria, prodArray){
 }
 
 function searching(){
-    var busca = document.getElementById('searcher');
-    var filtro = busca.value;
-    var lista = document.getElementById('list');
-    var arreglo = lista.getElementsByClassName("a");
-
+    var input = document.getElementById("searcher");
+    var filtro  = input.value;
+    var listadoProductos = document.getElementById("list");
+    var info = listadoProductos.getElementsByTagName("a");
     console.log(filtro);
-    for( i = 0;i<arreglo.length;i++ ){
-       let prod = arreglo[i].getElementsByClassName('mb-1');
-        let n = prod[0].innerHTML;
-        let d = prod[1].innerHTML;
-        console.log(arreglo[i]);
-        if( (n.toUpperCase().indexOf(filtro.toUpperCase())>-1) || (d.toUpperCase().indexOf(filtro.toUpperCase()) > -1)){
-            arreglo[i].style.display = "block";
+    for(let i = 0; i < info.length;i++){
+        producto = info[i].getElementsByClassName("mb-1");
+        nombre = producto[0].innerHTML;
+        desc = producto[1].innerHTML;
+        console.log(info[i]);
+        if((nombre.toUpperCase().indexOf(filtro.toUpperCase())> -1)||(desc.toUpperCase().indexOf(filtro.toUpperCase()))>-1){
+            info[i].style.display = "";
         }else{
-            arreglo[i].style.display = "none";
+            info[i].style.display = "none";
         }
-
-    }
+    } 
 
 }
 
