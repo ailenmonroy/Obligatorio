@@ -89,22 +89,22 @@ function sortAndShowProds(sortCriteria, prodArray){
     showProdList();
 }
 
-function search(){
-    var bus = document.getElementById('searcher');
-    var filtro = bus.value;
+function searching(){
+    var busca = document.getElementById('searcher');
+    var filtro = busca.value;
     var lista = document.getElementById('list');
-    var ar = lista.getElementsByClassName('a');
+    var arreglo = lista.getElementsByClassName("a");
 
     console.log(filtro);
-    for( i = 0;i<ar.length;i++ ){
-        prod = ar[i].getElementsByClassName('mb-1');
+    for( i = 0;i<arreglo.length;i++ ){
+        prod = arreglo[i].getElementsByClassName('mb-1');
         n = prod[0].innerHTML;
         d = prod[1].innerHTML;
-        console.log(ar[i]);
-        if(n.toUpperCase().indexOf(filtro.toUpperCase())>-1 || d.toUpperCase().indexOf(filtro.toUpperCase()) > -1){
-            ar[i].style.display = "";
+        console.log(arreglo[i]);
+        if( (n.toUpperCase().indexOf(filtro.toUpperCase())>-1) || (d.toUpperCase().indexOf(filtro.toUpperCase()) > -1)){
+            arreglo[i].style.display = "block";
         }else{
-            ar[i].style.display = "none";
+            arreglo[i].style.display = "none";
         }
 
     }
