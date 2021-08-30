@@ -26,8 +26,8 @@ function sortProds(criteria, array){
         });
     }else if (criteria === ORDER_BY_PROD_SOLD){
         result = array.sort(function(a, b) {
-            let aCost = parseInt(a.productCount);
-            let bCost = parseInt(b.productCount);
+            let aCost = parseInt(a.soldCount);
+            let bCost = parseInt(b.soldCount);
 
             if ( aCost > bCost ){ return -1; }
             if ( aCost < bCost ){ return 1; }
@@ -97,9 +97,9 @@ function searching(){
 
     console.log(filtro);
     for( i = 0;i<arreglo.length;i++ ){
-        prod = arreglo[i].getElementsByClassName('mb-1');
-        n = prod[0].innerHTML;
-        d = prod[1].innerHTML;
+       let prod = arreglo[i].getElementsByClassName('mb-1');
+        let n = prod[0].innerHTML;
+        let d = prod[1].innerHTML;
         console.log(arreglo[i]);
         if( (n.toUpperCase().indexOf(filtro.toUpperCase())>-1) || (d.toUpperCase().indexOf(filtro.toUpperCase()) > -1)){
             arreglo[i].style.display = "block";
@@ -123,15 +123,15 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     
-    document.getElementById("sortAsc").addEventListener("click", function(){
+    document.getElementById("sortAs").addEventListener("click", function(){
         sortAndShowProds(ORDER_ASC_BY_COST);
     });
 
-    document.getElementById("sortDesc").addEventListener("click", function(){
+    document.getElementById("sortDes").addEventListener("click", function(){
         sortAndShowProds(ORDER_DESC_BY_COST);
     });
 
-    document.getElementById("sortByCount").addEventListener("click", function(){
+    document.getElementById("sortBySold").addEventListener("click", function(){
         sortAndShowProds(ORDER_BY_PROD_SOLD);
     });
 
