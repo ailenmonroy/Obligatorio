@@ -4,8 +4,8 @@ const ORDER_BY_PROD_SOLD = "Cant.";
 var currentProdArray = [];
 var prodArray = [];
 var currentSortCriteria = undefined;
-var minCount = undefined;
-var maxCount = undefined;
+var minCost = undefined;
+var maxCost = undefined;
 
 
 
@@ -50,28 +50,30 @@ function showProdList(){
     for(let i = 0; i < currentProdArray.length; i++){
         let prod = currentProdArray[i];
 
-        htmlContentToAppend += `
-        <div class="list-group-item list-group-item-action">
-            <div class="row">
-                <div class="col-3">
-                    <img src="` + prod.imgSrc + `" alt="` + prod.name + `" class="img-thumbnail">
-                </div>
-                <div class="col">
-                    <div class="d-flex w-100 justify-content-between">
-                        <h4 class="mb-1">`+ prod.name +`</h4>
-                        <small class="text-muted">` + prod.soldCount + ` artículos</small>
-                        
+        if (((minCost == undefined) || (minCost != undefined && parseInt(prod.cost) >= minCost)) &&
+            ((maxCost == undefined) || (maxCost != undefined && parseInt(prod.cost) <= maxCost))){
+            htmlContentToAppend += `
+            <div class="list-group-item list-group-item-action">
+                <div class="row">
+                    <div class="col-3">
+                        <img src="` + prod.imgSrc + `" alt="` + prod.name + `" class="img-thumbnail">
                     </div>
-                    <p class="text-muted">` + prod.description + ` </p>
-                    <p class="text-muted">` + prod.cost +  prod.currency +` </p>
-                   
+                    <div class="col">
+                        <div class="d-flex w-100 justify-content-between">
+                            <h4 class="mb-1">`+ prod.name +`</h4>
+                            <small class="text-muted">` + prod.soldCount + ` artículos</small>
+                            
+                        </div>
+                        <p class="text-muted">` + prod.description + ` </p>
+                        <p class="text-muted">` + prod.cost +  prod.currency +` </p>
                     
+                        
 
+                    </div>
                 </div>
             </div>
-        </div>
-        `
-
+            `
+        }
         document.getElementById("list").innerHTML = htmlContentToAppend;
     }
 }
@@ -137,8 +139,8 @@ document.addEventListener("DOMContentLoaded", function () {
         document.getElementById("rangeFilterCountMin").value = "";
         document.getElementById("rangeFilterCountMax").value = "";
 
-        minCount = undefined;
-        maxCount = undefined;
+        minCost = undefined;
+        maxCost = undefined;
 
         showProdList();
     });
@@ -146,21 +148,21 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("rangeFilterCount").addEventListener("click", function(){
         //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
         //de productos por categoría.
-        minCount = document.getElementById("rangeFilterCountMin").value;
-        maxCount = document.getElementById("rangeFilterCountMax").value;
+        minCost = document.getElementById("rangeFilterCountMin").value;
+        maxCost = document.getElementById("rangeFilterCountMax").value;
 
-        if ((minCount != undefined) && (minCount != "") && (parseInt(minCount)) >= 0){
-            minCount = parseInt(minCount);
+        if ((minCost != undefined) && (minCost != "") && (parseInt(minCost)) >= 0){
+            minCost = parseInt(minCost);
         }
         else{
-            minCount = undefined;
+            minCost = undefined;
         }
 
-        if ((maxCount != undefined) && (maxCount != "") && (parseInt(maxCount)) >= 0){
-            maxCount = parseInt(maxCount);
+        if ((maxCost != undefined) && (maxCost != "") && (parseInt(maxCost)) >= 0){
+            maxCost = parseInt(maxCost);
         }
         else{
-            maxCount = undefined;
+            maxCost = undefined;
         }
 
         showProdList();
