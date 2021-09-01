@@ -41,7 +41,7 @@ function redirigir(){
     if(usuario.value == ''||contra.value == '' ){
         e.style.display = "block";
     }else{//me loguea
-        sessionStorage.setItem('log',true);
+        sessionStorage.setItem('log',usuario.value);//guardo el usuario
         e.style.display = "none";
         location.replace("index.html");
 

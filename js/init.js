@@ -7,6 +7,7 @@ const PRODUCT_INFO_COMMENTS_URL = "https://japdevdep.github.io/ecommerce-api/pro
 const CART_INFO_URL = "https://japdevdep.github.io/ecommerce-api/cart/987.json";
 const CART_BUY_URL = "https://japdevdep.github.io/ecommerce-api/cart/buy.json";
 
+var us = sessionStorage.getItem('log');//llamo al usuario
 
 
 
@@ -45,7 +46,12 @@ function inicio(){
         
 }
 
-
+//poner al usario 
+function cargarUsuario(){
+  var u = document.getElementById('logueado');
+  u.style.color = "white";
+  u.innerHTML = "Te has logueado como "+ " "+ us;
+}
 
 
 
@@ -53,5 +59,6 @@ function inicio(){
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(){
+  cargarUsuario();
 });
 

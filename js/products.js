@@ -101,7 +101,7 @@ function searching(){
         desc = producto[1].innerHTML;
         console.log(info[i]);
         if((nombre.toUpperCase().indexOf(filtro.toUpperCase())> -1)||(desc.toUpperCase().indexOf(filtro.toUpperCase()))>-1){
-            info[i].style.display = "";
+            info[i].style.display = "block";
         }else{
             info[i].style.display = "none";
         }
