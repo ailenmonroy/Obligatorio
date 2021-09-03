@@ -91,25 +91,65 @@ function sortAndShowProds(sortCriteria, prodArray){
     showProdList();
 }
 
-function searching(){
-    var input = document.getElementById("searcher");
-    var filtro  = input.value;
-    var listadoProductos = document.getElementById("list");
-    var info = listadoProductos.getElementsByTagName("a");
-    console.log(filtro);
-    for(let i = 0; i < info.length;i++){
-        producto = info[i].getElementsByClassName("mb-1");
-        nombre = producto[0].innerHTML;
-        desc = producto[1].innerHTML;
-        console.log(info[i]);
-        if((nombre.toUpperCase().indexOf(filtro.toUpperCase())> -1)||(desc.toUpperCase().indexOf(filtro.toUpperCase()))>-1){
-            info[i].style.display = "block";
-        }else{
-            info[i].style.display = "none";
-        }
-    } 
+//Buscador
+var prod = undefined;
 
+getJSONData(PRODUCTS_URL).then(function(resultObj){
+    if (resultObj.status === "ok"){
+        prod = resultObj.data;
+    }
+});
+
+
+var bus = document.getElementById("searcher");
+var lista = document.getElementById("list");
+var busqueda = document.getElementById("busqueda");
+const searching = ()=>{//función de felcha: pinta en consola lo que el usaurio escribe
+    //console.log(bus.value);
+    
+    
+    var texto = bus.value.toLowerCase();
+    if(texto !== ''){
+        lista.style.display = "none";
+        for(let p of prod){
+            let n = p.name.toLowerCase();
+
+            if(n.indexOf(texto) !== -1){//indexOf
+                busqueda.innerHTML += `
+                <div class="list-group-item list-group-item-action">
+                    <div class="row">
+                        <div class="col-3">
+                            <img src="` + p.imgSrc + `" alt="` + p.name + `" class="img-thumbnail">
+                        </div>
+                        <div class="col">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h4 class="mb-1">`+ p.name +`</h4>
+                                <small class="text-muted">` + p.soldCount + ` artículos</small>
+                                
+                            </div>
+                            <p class="text-muted">` + p.description + ` </p>
+                            <p class="text-muted">` + p.cost +  p.currency +` </p>
+                        
+                            
+
+                        </div>
+                    </div>
+                </div>
+                `
+            
+            }
+
+        }
+        busqueda.style.display = "block";
+    }else{
+        busqueda.innerHTML = ' ';
+        lista.style.display = "block";
+    }    
 }
+
+bus.addEventListener("keyup",searching);
+
+
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
