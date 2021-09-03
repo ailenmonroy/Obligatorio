@@ -46,19 +46,23 @@ function inicio(){
         
 }
 
+
 //poner al usario 
 function cargarUsuario(){
   var u = document.getElementById('logueado');
-  u.style.color = "white";
-  u.innerHTML = "Te has logueado como "+ " "+ us;
+  if(u !== null){
+    u.style.color = "white";
+    u.innerHTML = "Te has logueado como "+ " "+ us;
+  }
+  
 }
 
-
+cargarUsuario();
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
 document.addEventListener("DOMContentLoaded", function(){
-  cargarUsuario();
+ 
 });
 

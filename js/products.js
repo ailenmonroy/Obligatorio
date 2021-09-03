@@ -87,7 +87,6 @@ function sortAndShowProds(sortCriteria, prodArray){
 
     currentProdArray= sortProds(currentSortCriteria, currentProdArray);
 
-    //Muestro las categorías ordenadas
     showProdList();
 }
 
@@ -104,9 +103,7 @@ getJSONData(PRODUCTS_URL).then(function(resultObj){
 var bus = document.getElementById("searcher");
 var lista = document.getElementById("list");
 var busqueda = document.getElementById("busqueda");
-const searching = ()=>{//función de felcha: pinta en consola lo que el usaurio escribe
-    //console.log(bus.value);
-    
+const searching = ()=>{//función de felcha: pinta en consola lo que el usuario escribe
     
     var texto = bus.value.toLowerCase();
     if(texto !== ''){
@@ -186,8 +183,8 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     document.getElementById("rangeFilterCount").addEventListener("click", function(){
-        //Obtengo el mínimo y máximo de los intervalos para filtrar por cantidad
-        //de productos por categoría.
+        //Obtengo el mínimo y máximo de los intervalos para filtrar por el precio
+        //de cada producto.
         minCost = document.getElementById("rangeFilterCountMin").value;
         maxCost = document.getElementById("rangeFilterCountMax").value;
 
