@@ -40,10 +40,6 @@ function sortProds(criteria, array){
 
 
 
-
-
-
-
 function showProdList(){
 
     let htmlContentToAppend = "";
@@ -53,7 +49,7 @@ function showProdList(){
         if (((minCost == undefined) || (minCost != undefined && parseInt(prod.cost) >= minCost)) &&
             ((maxCost == undefined) || (maxCost != undefined && parseInt(prod.cost) <= maxCost))){
             htmlContentToAppend += `
-            <div class="list-group-item list-group-item-action">
+            <a href="product-info.html" class="list-group-item list-group-item-action" >
                 <div class="row">
                     <div class="col-3">
                         <img src="` + prod.imgSrc + `" alt="` + prod.name + `" class="img-thumbnail">
@@ -71,12 +67,13 @@ function showProdList(){
 
                     </div>
                 </div>
-            </div>
+            </a>
             `
         }
         document.getElementById("list").innerHTML = htmlContentToAppend;
     }
 }
+
 
 function sortAndShowProds(sortCriteria, prodArray){
     currentSortCriteria = sortCriteria;
@@ -91,7 +88,7 @@ function sortAndShowProds(sortCriteria, prodArray){
 }
 
 //Buscador
-var prod = undefined;
+var prod = [];
 
 getJSONData(PRODUCTS_URL).then(function(resultObj){
     if (resultObj.status === "ok"){
@@ -114,6 +111,7 @@ const searching = ()=>{//función de felcha: pinta en consola lo que el usuario 
             if(n.indexOf(texto) !== -1){//indexOf
                 busqueda.innerHTML += `
                 <div class="list-group-item list-group-item-action">
+                <a href="product-info.html" class="list-group-item list-group-item-action">
                     <div class="row">
                         <div class="col-3">
                             <img src="` + p.imgSrc + `" alt="` + p.name + `" class="img-thumbnail">
@@ -145,7 +143,6 @@ const searching = ()=>{//función de felcha: pinta en consola lo que el usuario 
 }
 
 bus.addEventListener("keyup",searching);
-
 
 
 //Función que se ejecuta una vez que se haya lanzado el evento de
