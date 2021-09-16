@@ -1,7 +1,6 @@
 var infoProd = {};
 
 function showImagesGallery(array){
-
     let htmlContentToAppend = "";
 
     for(let i = 0; i < array.length; i++){
@@ -10,7 +9,7 @@ function showImagesGallery(array){
         htmlContentToAppend += `
         <div class="col-lg-3 col-md-4 col-6">
             <div class="d-block mb-4 h-100">
-                <img  class="img-fluid" src="` + imageSrc + `" alt="">
+                <img  class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
 
             </div>
         </div>
@@ -20,7 +19,15 @@ function showImagesGallery(array){
     }
 }
 
+function meses(a,b){
+    let dateA = new Date(a.dateTime);
+    let dateB = new Date(b.dateTime);
+    if(dateA.getMonth()+1 > dateB.getMonth()+1){return -1;}
+    if(dateA.getMonth()+1 < dateB.getMonth()+1){return 1;}
+    return 0;
+}
 function showComments(comArray){
+    comArray = comArray.sort(meses); 
     let inner = "";
     for(let i = 0; i < comArray.length;i++){
         let com = comArray[i];
@@ -72,7 +79,8 @@ function comentar() {
             </div>
             </div>
         </a>`
-        document.getElementById("comments").innerHTML += inner;
+        var esp = document.getElementById("comments");
+        esp.innerHTML = inner +  esp.innerHTML;
         u.classList.remove("error");
         c.classList.remove("error");
     } else {

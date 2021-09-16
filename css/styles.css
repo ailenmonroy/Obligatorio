@@ -158,7 +158,7 @@ a.custom-card:hover {
 }
 
 
-.checked {
+.check {
   color: orange;
 }
 
@@ -199,4 +199,9 @@ a.custom-card:hover {
 
 .img-fluid{
   width: 100% \9;
+  height: auto;
+}
+
+.img-thumbnail{
+  border-radius: 10%;
 }
