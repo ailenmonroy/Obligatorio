@@ -110,6 +110,35 @@ $(".clasification").find("label").mouseover(function() {
     })
 })
 
+
+var prodArray = [];
+getJSONData(PRODUCTS_URL).then(function(resultObj){
+    if (resultObj.status === "ok"){
+        prodArray = resultObj.data;
+    }
+});
+
+
+//Productos relacionados
+function showRelProds(array){
+    let inner = "";
+    for(let i = 0;i < array.length;i++){
+        inner += `    
+        <div class="col-lg-3 col-md-4 col-6">
+            <div class="d-block mb-4 h-100">
+                <a href = "product-info.html">
+                    <img  class="img-fluid img-thumbnail" src="` + prodArray[array[i]].imgSrc + `" alt="">
+                </a>
+                <dt>`+prodArray[array[i]].name+`</dt><br>
+            </div>
+        </div>
+        
+        `
+    } 
+    var prodR = document.getElementById("prodsRel");
+    prodR.innerHTML = inner;
+}
+
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.
@@ -134,6 +163,7 @@ document.addEventListener("DOMContentLoaded", function(e){
 
             //Muestro las imagenes en forma de galería
             showImagesGallery(infoProd.images);
+            showRelProds(infoProd.relatedProducts);
         }
     });
 
@@ -142,4 +172,6 @@ document.addEventListener("DOMContentLoaded", function(e){
             showComments(resultObj.data);
         }
     });
+
+    
 });
