@@ -205,3 +205,8 @@ a.custom-card:hover {
 .img-thumbnail{
   border-radius: 10%;
 }
+
+#error{
+  display: none; 
+  color: red;
+}

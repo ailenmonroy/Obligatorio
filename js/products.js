@@ -70,8 +70,9 @@ function showProdList(){
             </a>
             `
         }
-        document.getElementById("list").innerHTML = htmlContentToAppend;
+        
     }
+    document.getElementById("list").innerHTML = htmlContentToAppend;
 }
 
 

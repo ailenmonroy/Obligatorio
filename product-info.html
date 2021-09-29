@@ -23,8 +23,16 @@
       <a class="py-2 d-none d-md-inline-block" href="categories.html">Categorías</a>
       <a class="py-2 d-none d-md-inline-block" href="products.html">Productos</a>
       <a class="py-2 d-none d-md-inline-block" href="sell.html">Vender</a>
-      <a class="py-2 d-none d-md-inline-block" href="cart.html">Mi carrito</a>
-      <a class="py-2 d-none d-md-inline-block" id="logueado"></a><!-- mostrar usuario -->
+      <div class="dropdown">
+        <button class="btn btn-secondary dropdown-toggle" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          <a class="boton" id="logueado"></a>
+        </button>
+          <div class="dropdown-menu dropdown-menu-right">
+            <a class="dropdown-item" href="my-profile.html">Mi perfil</a>
+            <a class="dropdown-item" href="cart.html">Mi carrito</a>
+            <a class="dropdown-item" onclick="cerrarSesion();">Cerrar sesión</a>
+          </div>
+        </div>
     </div>
   </nav>
 
@@ -63,6 +71,7 @@
         <dt>Imágenes ilustrativas</dt>
         <dd>
           <div class="row text-center text-lg-left pt-2" id="productImagesGallery">
+            
           </div>
         </dd>
 
@@ -77,6 +86,7 @@
         </div><br>
         <dt>Deja un comentario:</dt><br>
         <form>
+          <span id="error" >Debe completar todos los campos.</span>
           <div class="formGroup">
             <input type="text" id="user" placeholder="Usuario"><br><br>
             <textarea cols="50" rows="4" type="text" id="comm" placeholder="Comentario"></textarea><br>
@@ -94,7 +104,9 @@
             <input id="radio5" type="radio" name="stars" value="5">
             <label for="radio5">★</label>
           </p>
+          
           <button id="bCom" type="button" onclick="comentar();">Enviar</button>
+          
         </form>
       </dl>
 

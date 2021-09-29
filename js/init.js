@@ -57,13 +57,18 @@ function cargarUsuario(){
   var u = document.getElementById('logueado');
   if(u !== null){
     u.style.color = "white";
-    u.innerHTML = "Te has logueado como "+ " "+ us;
+    u.innerHTML =  us;
   }
   
 }
 
 cargarUsuario();
 
+
+function cerrarSesion(){
+  sessionStorage.removeItem('log');
+  inicio();
+}
 //Función que se ejecuta una vez que se haya lanzado el evento de
 //que el documento se encuentra cargado, es decir, se encuentran todos los
 //elementos HTML presentes.

@@ -7,10 +7,10 @@ function showImagesGallery(array){
         let imageSrc = array[i];
 
         htmlContentToAppend += `
+        
         <div class="col-lg-3 col-md-4 col-6">
             <div class="d-block mb-4 h-100">
                 <img  class="img-fluid img-thumbnail" src="` + imageSrc + `" alt="">
-
             </div>
         </div>
         `
@@ -57,6 +57,7 @@ function comentar() {
     let inner = "";
     var u = document.getElementById("user");
     var c = document.getElementById("comm");
+    var e = document.getElementById("error");
     var uScore = document.getElementsByClassName("check").length;
     let starsOn = `<span class="fa fa-star checked"></span>`
     let starsOff = `<span class="fa fa-star"></span>`
@@ -83,9 +84,11 @@ function comentar() {
         esp.innerHTML = inner +  esp.innerHTML;
         u.classList.remove("error");
         c.classList.remove("error");
+        e.style = "display: none";
     } else {
         u.classList.add("error");
         c.classList.add("error");
+        e.style = "display: block";
     }
 }
 
