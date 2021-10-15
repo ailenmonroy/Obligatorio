@@ -8,6 +8,7 @@ function costEnvTot(){
     let sub = cartInfoD.articles[0].unitCost*c;
     let total = sub + (sub*22)/100;
     let envio = 0;
+    let ct = 0;
     var tipo = document.getElementById("tipoEnv").value;
     var costoE = document.getElementById("costoEnv");
     var costoT = document.getElementById("costoTotal");
@@ -25,8 +26,9 @@ function costEnvTot(){
                     envio = (sub*5)/100;
             }
         }
+        ct = total + envio;
         costoE.innerHTML = envio + " " + cartInfoD.articles[0].currency;
-        costoT.innerHTML = total + envio + " " + cartInfoD.articles[0].currency;
+        costoT.innerHTML = ct + " " + cartInfoD.articles[0].currency;
         costoE.style.display = "block";
         costoT.style.display = "block";
     }
@@ -41,25 +43,27 @@ function showCartInfo(cartInfo){
     let inner = "";
     for(let i = 0; i < cartInfo.length; i++){
         let art = cartInfo[i];
-        inner += `<div class="cart_item_image"><img src="` + art.src + `" alt="` + art.name + `" class="imageCart"></div>
-        <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
-            <div class="cart_item_name cart_info_col">
-            <div class="cart_item_title">Nombre</div>
-                <div class="cart_item_text">` + art.name + `</div>
+        inner += `<li class="cart_item clearfix">
+        <div class="cart_item_image"><img src="` + art.src + `" alt="` + art.name + `" class="imageCart"></div>
+            <div class="cart_item_info d-flex flex-md-row flex-column justify-content-between">
+                <div class="cart_item_name cart_info_col">
+                    <div class="cart_item_title">Nombre</div>
+                        <div class="cart_item_text">` + art.name + `</div>
+                    </div>
+                    <div class="cart_item_quantity cart_info_col">
+                        <div class="cart_item_title">Cantidad</div>
+                        <div class="cart_item_text"> <input  class="inpCant" type="number" id="canti" name="canti" value= ` + art.count + ` onchange= "Calcularsub();"></div>
+                    </div>
+                    <div class="cart_item_price cart_info_col">
+                        <div class="cart_item_title">Precio por unidad</div>
+                        <div class="cart_item_text">` + art.unitCost +  ` `+ art.currency + `</div>
+                    </div>
+                    <div class="cart_item_total cart_info_col">
+                        <div class="cart_item_title">Total</div>
+                    <div class="cart_item_text" id="subA">` + art.unitCost * art.count +` `+ art.currency + `</div>
+                </div>
             </div>
-            <div class="cart_item_quantity cart_info_col">
-                <div class="cart_item_title">Cantidad</div>
-                <div class="cart_item_text"> <input  class="inpCant" type="number" id="canti" name="canti" value= ` + art.count + ` onchange= "Calcularsub();"></div>
-            </div>
-            <div class="cart_item_price cart_info_col">
-                <div class="cart_item_title">Precio por unidad</div>
-                <div class="cart_item_text">` + art.unitCost +  ` `+ art.currency + `</div>
-            </div>
-            <div class="cart_item_total cart_info_col">
-                <div class="cart_item_title">Total</div>
-                <div class="cart_item_text" id="subA">` + art.unitCost * art.count +` `+ art.currency + `</div>
-            </div>
-        </div>`
+            </li>`
 
         let subArt = art.unitCost*art.count;
         document.getElementById("subtotal").innerHTML = "Subtotal: " + subArt + " "+ art.currency;
@@ -70,7 +74,7 @@ function showCartInfo(cartInfo){
         document.getElementById("articlesList").innerHTML += inner;
         var cant = document.getElementById("cantArts");
         cant.innerHTML = "(" + cartInfo.length + "" + cant.innerHTML;
-        
+        costEnvTot(); 
 }
 
 function Calcularsub(){
@@ -114,6 +118,14 @@ function errorPago(){
             fe.classList.remove("error");
             numc.classList.add("error");
             co.classList.add("error");
+        }else{
+            nombre.classList.remove("error");
+            dni.classList.remove("error");
+            numt.classList.remove("error");
+            nums.classList.remove("error");
+            fe.classList.remove("error");
+            numc.classList.remove("error");
+            co.classList.remove("error");
         }
     }else{
         nombre.classList.remove("error");
