@@ -369,4 +369,11 @@ a.custom-card:hover {
   margin-bottom: 3px;
 }
 
+.pago{
+  display: none;
+}
 
+legend{
+  border-bottom: solid 1px rgb(94, 94, 94);
+  
+}

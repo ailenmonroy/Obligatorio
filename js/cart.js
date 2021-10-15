@@ -2,6 +2,41 @@ var cartInfoD = [];
 var sub = 0;
 var total = 0;
 
+
+function costEnvTot(){
+    var c = document.getElementById("canti").value;
+    let sub = cartInfoD.articles[0].unitCost*c;
+    let total = sub + (sub*22)/100;
+    let envio = 0;
+    var tipo = document.getElementById("tipoEnv").value;
+    var costoE = document.getElementById("costoEnv");
+    var costoT = document.getElementById("costoTotal");
+    if(tipo == ""){
+        costoE.style.display = "none";
+        costoT.style.display = "none";
+    }else{
+        if(tipo == "prem"){
+            envio = (sub*15)/100; 
+        }else{
+            if(tipo == "exp"){
+                envio = (sub*7)/100;
+            }else{
+                if(tipo == "est")
+                    envio = (sub*5)/100;
+            }
+        }
+        costoE.innerHTML = envio + " " + cartInfoD.articles[0].currency;
+        costoT.innerHTML = total + envio + " " + cartInfoD.articles[0].currency;
+        costoE.style.display = "block";
+        costoT.style.display = "block";
+    }
+
+    
+}
+    
+    
+
+
 function showCartInfo(cartInfo){
     let inner = "";
     for(let i = 0; i < cartInfo.length; i++){
@@ -30,25 +65,66 @@ function showCartInfo(cartInfo){
         document.getElementById("subtotal").innerHTML = "Subtotal: " + subArt + " "+ art.currency;
         let total = subArt + (subArt*22)/100;
         document.getElementById("total").innerHTML = "Total: " + total +  " "+art.currency;
-        }
+    }
 
         document.getElementById("articlesList").innerHTML += inner;
         var cant = document.getElementById("cantArts");
         cant.innerHTML = "(" + cartInfo.length + "" + cant.innerHTML;
-    
+        
 }
 
 function Calcularsub(){
     var cant = document.getElementById("canti").value;
     let unit = cartInfoD.articles[0].unitCost;
     let subArt = unit*cant;
+    let total = subArt + (subArt*22)/100;
+
     document.getElementById("subA").innerHTML = subArt + " "+cartInfoD.articles[0].currency;
     document.getElementById("subtotal").innerHTML = "Subtotal: " + subArt + " "+ cartInfoD.articles[0].currency;
-    let total = subArt + (subArt*22)/100;
+    
     document.getElementById("total").innerHTML = "Total: " + total +  cartInfoD.articles[0].currency;
+    costEnvTot();
 }
 
 
+function errorPago(){
+    var m = document.getElementById("metodo").value;
+    var nombre = document.getElementById("nomC");
+    var dni = document.getElementById("dni");
+    var numt = document.getElementById("numT");
+    var nums = document.getElementById("numS");
+    var fe = document.getElementById("fec");
+    var numc = document.getElementById("numC");
+    var co = document.getElementById("cont");
+
+    if(m !== ""){
+        if(m =="cred"&&(((((nombre.value==""||dni.value=="")||numt.value=="")||nums.value=="")||fe.value==""))){
+            nombre.classList.add("error");
+            dni.classList.add("error");
+            numt.classList.add("error");
+            nums.classList.add("error");
+            fe.classList.add("error");
+            numc.classList.remove("error");
+            co.classList.remove("error");
+        }else if(m =="transf"&&(nombre.value==""||dni.value==""||numc.value==""||co.value=="")){
+            nombre.classList.add("error");
+            dni.classList.add("error");
+            numt.classList.remove("error");
+            nums.classList.remove("error");
+            fe.classList.remove("error");
+            numc.classList.add("error");
+            co.classList.add("error");
+        }
+    }else{
+        nombre.classList.remove("error");
+        dni.classList.remove("error");
+        numt.classList.remove("error");
+        nums.classList.remove("error");
+        fe.classList.remove("error");
+        numc.classList.remove("error");
+        co.classList.remove("error");
+    }
+}
 
 
 
