@@ -44,31 +44,25 @@ function showProdList(){
 
     let htmlContentToAppend = "";
     for(let i = 0; i < currentProdArray.length; i++){
-        let prod = currentProdArray[i];
+        let p = currentProdArray[i];
 
         if (((minCost == undefined) || (minCost != undefined && parseInt(prod.cost) >= minCost)) &&
             ((maxCost == undefined) || (maxCost != undefined && parseInt(prod.cost) <= maxCost))){
-            htmlContentToAppend += `
-            <a href="product-info.html" class="list-group-item list-group-item-action" >
-                <div class="row">
-                    <div class="col-3">
-                        <img src="` + prod.imgSrc + `" alt="` + prod.name + `" class="img-thumbnail">
-                    </div>
-                    <div class="col">
-                        <div class="d-flex w-100 justify-content-between">
-                            <h4 class="mb-1">`+ prod.name +`</h4>
-                            <small class="text-muted">` + prod.soldCount + ` artículos</small>
-                            
-                        </div>
-                        <p class="text-muted">` + prod.description + ` </p>
-                        <p class="text-muted">` + prod.cost +  prod.currency +` </p>
-                    
-                        
-
-                    </div>
-                </div>
-            </a>
-            `
+            htmlContentToAppend += 
+            `<div class="col-md-4">
+                <a href="product-info.html" class="card mb-4 shadow-sm custom-card">
+                  <img class="bd-placeholder-img card-img-top" src="` + p.imgSrc + `" alt="` + p.name + `">
+                  <h3 class="m-3">`+ p.name +`</h3>
+                  <div class="card-body">
+                    <p class="card-text">` + p.description + `</p>
+                    <small class="text-muted">` + p.soldCount + ` artículos</small>
+                    <p class="card-text">` + p.cost +  p.currency +` </p>
+                  </div>
+                </a>
+            </div>
+                
+                `
+            
         }
         
     }
@@ -110,8 +104,21 @@ const searching = ()=>{//función de felcha: pinta en consola lo que el usuario 
             let n = p.name.toLowerCase();
 
             if(n.indexOf(texto) !== -1){//indexOf
-                busqueda.innerHTML += `
-                <div class="list-group-item list-group-item-action">
+                busqueda.innerHTML += `<div class="col-md-4">
+                <a href="categories.html" class="card mb-4 shadow-sm custom-card">
+                  <img class="bd-placeholder-img card-img-top" src="` + p.imgSrc + `" alt="` + p.name + `">
+                  <h3 class="m-3">`+ p.name +`</h3>
+                  <div class="card-body">
+                    <p class="card-text">` + p.description + `</p>
+                    <small class="text-muted">` + p.soldCount + ` artículos</small>
+                    <p class="card-text">` + p.cost +  p.currency +` </p>
+                  </div>
+                </a>
+            </div>
+                
+                `
+                
+                /*<div class="list-group-item list-group-item-action">
                 <a href="product-info.html" class="list-group-item list-group-item-action">
                     <div class="row">
                         <div class="col-3">
@@ -131,7 +138,7 @@ const searching = ()=>{//función de felcha: pinta en consola lo que el usuario 
                         </div>
                     </div>
                 </div>
-                `
+                `*/
             
             }
 

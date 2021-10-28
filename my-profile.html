@@ -53,14 +53,73 @@
     </div>
     </div>
   </nav>
-  <div class="container p-5">
-    <div class="alert alert-danger" role="alert" style="position: relative; width:auto; top: 0;">
-      <h4 class="alert-heading">¡A trabajar! :)</h4>
-      <p>Esta sección corresponde a: Entrega 6 (Fecha de entrega: 31/10/2021).</p>
-      <hr>
-      <p class="mb-0">Para saber qué debes hacer, fijate en la actividad en CREA correspondiente a esta entrega.</p>
+
+  <main>
+    <div class="container rounded bg-white mt-5 mb-5">
+      <div class="row">
+
+          <div class="col-md-3 border-right">
+              <div class="d-flex flex-column align-items-center text-center p-3 py-5"><img class="rounded-circle mt-5" width="150px" src="img/kitty.jpg"><span class="font-weight-bold" id="nombre"></span><span class="text-black-50" id="email"></span><span> </span></div>
+          </div>
+
+          <div class="col-md-5 border-right">
+            <div class="p-3 py-5">
+
+              <div class="d-flex justify-content-between align-items-center mb-3">
+                <h4 class="text-right">Perfil</h4>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-12"><label class="labels">Nombre completo</label><input type="text" id="nom" class="form-control" placeholder="Ingrese su nombre completo" onblur="errorDatos('nom','nome');" disabled>
+                  <span id="nome" style="color: red; display: none;">Debe ingresar su nombre completo.</span>
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-12"><label class="labels">Edad</label><input type="text" id="edad" class="form-control" placeholder="Ingrese su edad" onblur="errorDatos('edad','edade');" disabled>
+                  <span id="edade" style="color: red; display: none;">Debe ingresar su edad.</span>
+                </div>
+              </div>
+            
+              <div class="row mt-3">
+                <div class="col-md-12"><label class="labels">E-mail</label><input type="text" id="ema" class="form-control" placeholder="Ingrese su e-mail" onblur="errorDatos('ema','emae');" disabled>
+                  <span id="emae" style="color: red; display: none;">Debe ingresar su e-mail.</span>
+                </div>
+              </div>
+
+              <div class="row mt-3">
+                <div class="col-md-12"><label class="labels">Teléfono de contacto</label><input type="text" id="tel" class="form-control" placeholder="Ingrese su número" onblur="errorDatos('tel','tele');" disabled>
+                  <span id="tele" style="color: red; display: none;">Debe ingresar su tléfono de contacto.</span>
+                </div>
+              </div>
+
+              <div class="mt-5"><button class="btn btn-primary profile-button" type="button" id="guPerf" style="display: none;" >Guardar cambios</button>
+                <button class="btn btn-primary profile-button" type="button" id="modPerf">Modificar perfil</button>
+              </div>
+
+        
+            </div>
+          </div>
+      </div>
     </div>
-  </div>
+
+  </main>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <footer class="text-muted bg-light">
     <div class="container">
       <p>Este sitio forma parte de Desarrollo Web - JAP - 2020</p>
