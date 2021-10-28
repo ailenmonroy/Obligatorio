@@ -52,7 +52,12 @@ function guardar(){
     nombre.setAttribute("disabled",true);
     edad.setAttribute("disabled",true);
     ema.setAttribute("disabled",true);
-    tel.setAttribute("disabled",true);    
+    tel.setAttribute("disabled",true);
+    
+    errorDatos('nom','nome');
+    errorDatos('edad','edade');
+    errorDatos('ema','emae');
+    errorDatos('tel','tele');
     
 }
 

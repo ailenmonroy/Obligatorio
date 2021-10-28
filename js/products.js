@@ -118,27 +118,6 @@ const searching = ()=>{//función de felcha: pinta en consola lo que el usuario 
                 
                 `
                 
-                /*<div class="list-group-item list-group-item-action">
-                <a href="product-info.html" class="list-group-item list-group-item-action">
-                    <div class="row">
-                        <div class="col-3">
-                            <img src="` + p.imgSrc + `" alt="` + p.name + `" class="img-thumbnail">
-                        </div>
-                        <div class="col">
-                            <div class="d-flex w-100 justify-content-between">
-                                <h4 class="mb-1">`+ p.name +`</h4>
-                                <small class="text-muted">` + p.soldCount + ` artículos</small>
-                                
-                            </div>
-                            <p class="text-muted">` + p.description + ` </p>
-                            <p class="text-muted">` + p.cost +  p.currency +` </p>
-                        
-                            
-
-                        </div>
-                    </div>
-                </div>
-                `*/
             
             }
 
